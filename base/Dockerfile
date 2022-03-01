@@ -18,8 +18,8 @@ RUN curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
 
 RUN gpg --import KEYS
 
-ENV HADOOP_VERSION 3.2.1
-ENV HADOOP_URL https://www.apache.org/dist/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz
+ENV HADOOP_VERSION 3.3.1
+ENV HADOOP_URL https://downloads.apache.org/hadoop/common/stable/hadoop-$HADOOP_VERSION.tar.gz
 
 #COPY hadoop-${HADOOP_VERSION}.tar.gz /tmp/hadoop.tar.gz
 RUN set -x \
