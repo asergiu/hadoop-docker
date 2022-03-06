@@ -23,6 +23,9 @@ services:
     restart: always
     volumes:
       - hadoop_datanode:/hadoop-data/dfs
+    deploy:
+        mode:replicated
+        replicas:1
     environment:
       SERVICE_PRECONDITION: "namenode:9870 namenode:9000 resourcemanager:8088"
     env_file:
@@ -61,5 +64,8 @@ services:
   
 volumes:
   hadoop_namenode:
+  
   hadoop_datanode:
+      name: 'data-{{.Task.Slot}}'
+
   hadoop_historyserver:
