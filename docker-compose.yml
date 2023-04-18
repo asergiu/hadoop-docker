@@ -12,17 +12,17 @@ services:
     volumes:
       - hadoop_namenode:/hadoop-data/dfs/name
     environment:
-      - CLUSTER_NAME=hadoop
+      - CLUSTER_NAME=hadoop-dadi
     env_file:
       - ./hadoop.env
 
   datanode:
     build: ./datanode
-    image: asergiu/ubb:hadoop-node
+    image: asergiu/ubb:hadoop-datanode
     container_name: datanode
     restart: always
     volumes:
-      - hadoop_datanode:/hadoop-data/dfs
+      - hadoop_datanode:/hadoop-data/dfs/data
     environment:
       SERVICE_PRECONDITION: "namenode:9870 namenode:9000 resourcemanager:8088"
     env_file:
@@ -54,7 +54,7 @@ services:
     container_name: historyserver
     restart: always
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 node:9864 resourcemanager:8088"
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
     volumes:
       - hadoop_historyserver:/hadoop/yarn/timeline
     env_file:
