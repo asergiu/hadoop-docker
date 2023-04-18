@@ -16,8 +16,8 @@ services:
     env_file:
       - ./hadoop.env
 
-  node:
-    build: ./node
+  datanode:
+    build: ./datanode
     image: asergiu/ubb:hadoop-node
     container_name: datanode
     restart: always
@@ -38,14 +38,15 @@ services:
     env_file:
       - ./hadoop.env
 
- nodemanager:
-   image: asergiu/ubb:hadoop-nodemanager
-   container_name: nodemanager
-   restart: always
-   environment:
-     SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
-   env_file:
-     - ./hadoop.env
+  nodemanager:
+    build: ./nodemanager
+    image: asergiu/ubb:hadoop-nodemanager
+    container_name: nodemanager
+    restart: always
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+    env_file:
+      - ./hadoop.env
   
   historyserver:
     build: ./historyserver
