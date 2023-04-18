@@ -18,7 +18,7 @@ RUN curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
 
 RUN gpg --import KEYS
 
-ENV HADOOP_VERSION 3.3.1
+ENV HADOOP_VERSION 3.2.3
 ENV HADOOP_URL https://downloads.apache.org/hadoop/common/stable/hadoop-$HADOOP_VERSION.tar.gz
 
 #COPY hadoop-${HADOOP_VERSION}.tar.gz /tmp/hadoop.tar.gz
@@ -30,6 +30,8 @@ RUN set -x \
     && rm /tmp/hadoop.tar.gz*
 
 RUN ln -s /opt/hadoop-$HADOOP_VERSION/etc/hadoop /etc/hadoop
+
+RUN ln -s /opt/hadoop-$HADOOP_VERSION /opt/hadoop
 
 RUN mkdir /opt/hadoop-$HADOOP_VERSION/logs
 
