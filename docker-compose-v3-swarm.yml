@@ -113,12 +113,9 @@ services:
 
 volumes:
   datanode:
-    # external: true
   namenode:
-    # external: true
   hadoop_historyserver:
 
 networks:
   hadoop_test_network:
-    external:
-      name: hadoop_test_network
+    external: true
