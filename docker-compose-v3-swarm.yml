@@ -38,14 +38,14 @@ services:
     env_file:
       - ./hadoop.env
     environment:
-      SERVICE_PRECONDITION: "namenode:9870 namenode:9000 resourcemanager:8088"
+     SERVICE_PRECONDITION: "namenode:9870 namenode:9000 resourcemanager:8088"
     deploy:
       mode: global
       restart_policy:
         condition: on-failure
       labels:
-        traefik.docker.network: hadoop_test_network
-        traefik.port: 50075
+        # traefik.docker.network: hadoop_test_network
+        # traefik.port: 50075
 
   resourcemanager:
     image: asergiu/ubb:hadoop-resourcemanager
@@ -77,6 +77,8 @@ services:
       - hadoop_test_network
     ports:
       - 8042:8042
+    depends_on:
+      -resourcemanager
     environment:
       SERVICE_PRECONDITION: "namenode:9000 namenode:9870 resourcemanager:8088"
     env_file:
@@ -113,9 +115,9 @@ services:
 
 volumes:
   datanode:
-    external: true
+    # external: true
   namenode:
-    external: true
+    # external: true
   hadoop_historyserver:
 
 networks:
