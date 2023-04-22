@@ -23,9 +23,9 @@ services:
       placement:
         constraints:
           - node.role == manager
-      # labels:
-        # traefik.docker.network: hadoop_test_network
-        # traefik.port: 50070
+      labels:
+        traefik.docker.network: hadoop_test_network
+        traefik.port: 50070
 
   datanode:
     image: asergiu/ubb:hadoop-datanode
@@ -43,9 +43,9 @@ services:
       mode: global
       restart_policy:
         condition: on-failure
-      # labels:
-        # traefik.docker.network: hadoop_test_network
-        # traefik.port: 50075
+      labels:
+        traefik.docker.network: hadoop_test_network
+        traefik.port: 50075
 
   resourcemanager:
     image: asergiu/ubb:hadoop-resourcemanager
@@ -65,11 +65,11 @@ services:
       placement:
         constraints:
           - node.role == manager
-      # labels:
-        # traefik.docker.network: hadoop_test_network
-        # traefik.port: 8088
-    # healthcheck:
-      # disable: true
+      labels:
+        traefik.docker.network: hadoop_test_network
+        traefik.port: 8088
+    healthcheck:
+      disable: true
 
   nodemanager:
     image: asergiu/ubb:hadoop-nodemanager
@@ -85,9 +85,9 @@ services:
       mode: global
       restart_policy:
         condition: on-failure
-      # labels:
-        # traefik.docker.network: hadoop_test_network
-        # traefik.port: 8042
+      labels:
+        traefik.docker.network: hadoop_test_network
+        traefik.port: 8042
 
   historyserver:
     image: asergiu/ubb:hadoop-historyserver
@@ -107,9 +107,9 @@ services:
       placement:
         constraints:
           - node.role == manager
-      # labels:
-        # traefik.docker.network: hadoop_test_network
-        # traefik.port: 8188
+      labels:
+        traefik.docker.network: hadoop_test_network
+        traefik.port: 8188
 
 volumes:
   datanode:
