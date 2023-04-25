@@ -1,0 +1,23 @@
+name: "aaa"
+
+services:
+  b1:
+    image: busybox:latest
+    container_name: b1
+    restart: always
+    volumes:
+      - b1:/data
+
+
+  b2:
+    image: busybox:latest
+    container_name: b2
+    restart: always
+    volumes:
+      - b2:/data
+
+
+volumes:
+  b1:
+  b2:
+
