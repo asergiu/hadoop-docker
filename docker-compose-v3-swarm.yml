@@ -6,7 +6,7 @@ services:
     networks:
       - hadoop_test_network
     volumes:
-      - namenode:/hadoop/dfs/name
+      - namenode:/hadoop-data/dfs/name
       - /home/hadoop:/data
     ports:
       - 9870:9870
@@ -32,7 +32,7 @@ services:
     networks:
       - hadoop_test_network
     volumes:
-      - datanode:/hadoop/dfs/data
+      - datanode:/hadoop-data/dfs/data
     ports:
       - 9864:9864
     env_file:
@@ -94,7 +94,7 @@ services:
     networks:
       - hadoop_test_network
     volumes:
-      - hadoop_historyserver:/hadoop/yarn/timeline
+      - hadoop_historyserver:/hadoop-data/yarn/timeline
     ports:
       - 8188:8188
     environment:

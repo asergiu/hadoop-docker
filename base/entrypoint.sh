@@ -53,7 +53,7 @@ if [ "$MULTIHOMED_NETWORK" = "1" ]; then
     addProperty /etc/hadoop/hdfs-site.xml dfs.datanode.use.datanode.hostname true
     addProperty /etc/hadoop/hdfs-site.xml dfs.hosts dfs.hosts
     addProperty /etc/hadoop/hdfs-site.xml dfs.hosts.exclude dfs.hosts.exclude
-    addProperty /etc/hadoop/hdfs-site.xml dfs.blocksize 1048576
+    addProperty /etc/hadoop/hdfs-site.xml dfs.blocksize 524288
     
 
     # YARN
