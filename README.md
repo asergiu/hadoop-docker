@@ -40,8 +40,18 @@ docker compose down
 ```
 do shutdown the setup.
 
-2. Running in swarm mode requires a swarm already created with at least 3 nodes. 
-<TBA>
+2. Running in swarm mode requires a swarm already created with at least 2-3 nodes. 
+Generally once the container images are either downloaded or built - one can issue the following command sequence to start the swarm (on a manager node):
+```bash
+docker network create -d overlay hadoop
+docker stack create -c docker-compose-v3-swarm.yml
+
+#list the started services
+docker stack services hadoop
+
+#shutdown swarm hadoop setup
+docker stack rm hadoop
+```
 
 
   
