@@ -118,4 +118,5 @@ volumes:
 
 networks:
   hadoop:
-    external: true
+    driver: overlay
+    # external: true
